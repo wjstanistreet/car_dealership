@@ -2,16 +2,12 @@ const {Dealership} = require("./dealership");
 
 const {Car} = require("./car");
 
-const {Customer} = require("./customer");
-
 let dealership;
 let car; 
-let customer;
 
 beforeEach(() => {
     car = new Car("Renault", 1000, "petrol");
     dealership = new Dealership("Will's Dealership", 4, [car]);
-    customer = new Customer("Bill", 4000);
 });
 
 describe("testing dealership class", () => {
@@ -133,6 +129,18 @@ describe("testing dealership methods", () => {
     });
 });
 
-describe("testing buying a car", () => {
+describe("testing find car methods", () => {
+    test("can find car in stock by specific price", () => {
+        const expected = [car];
+        const actual = dealership.findPrice(1000);
+        expect(actual).toStrictEqual(expected);
+    });
     
+    test("can find car in stock by engine type", () => {
+        const expected = [car];
+        const actual = dealership.findEngineType("petrol");
+        expect(actual).toStrictEqual(expected);
+    });
+
+
 });
