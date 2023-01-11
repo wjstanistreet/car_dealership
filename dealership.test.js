@@ -40,7 +40,20 @@ describe("testing dealership class", () => {
 describe("testing dealership methods", () => {
     test("can count total stock", () => {
         const expected = 1;
-        const actual = dealership.stock.length;
+        const actual = dealership.stockTotal();
         expect(actual).toBe(expected);
     });
+
+    
+    test("can add car to stock", () => {
+        const testCar = new Car("Honda", 2500, "diesel");
+
+        dealership.addCar(testCar);
+
+        const expected = 2;
+        const actual = dealership.stockTotal();
+        expect(actual).toBe(expected);
+    });
+
+
 });
