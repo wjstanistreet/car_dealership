@@ -18,24 +18,24 @@ Dealership.prototype.stockManufacturers = function(){
     return this.stock.map((car) => {return car.manufacturer});
 }
 
-Dealership.prototype.findManufacturer = function(manufacturerName){
-    return this.stock.filter((car) => {return car.manufacturer === manufacturerName});
+Dealership.prototype.findManufacturer = function(manufacturerName, dealership){
+    return dealership.stock.filter((car) => {return car.manufacturer === manufacturerName});
 }
 
-Dealership.prototype.findPrice = function(priceValue){
-    return this.stock.filter((car) => {return car.price === priceValue});
+Dealership.prototype.findPrice = function(priceValue, dealership){
+    return dealership.stock.filter((car) => {return car.price === priceValue});
 }
 
-Dealership.prototype.findEngineType = function(engineTypeName){
-    return this.stock.filter((car) => {return car.engineType === engineTypeName});
+Dealership.prototype.findEngineType = function(engineTypeName, dealership){
+    return dealership.stock.filter((car) => {return car.engineType === engineTypeName});
 }
 
 Dealership.prototype.stockValue = function(){
     return this.stock.reduce((accumulator, car) => {return accumulator + car.price}, 0);
 }
 
-Dealership.prototype.findCar = function(carToFind, callback){
-    callback(carToFind);
+Dealership.prototype.findCar = function(carPropertyToFind, callback){
+    return callback(carPropertyToFind, this);
 }
 
 Dealership.prototype.getCarIndex = function(carToFind){

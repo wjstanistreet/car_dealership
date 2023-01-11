@@ -83,7 +83,7 @@ describe("testing dealership methods", () => {
     
     test("can find all cars in stock from specific manufacturer - one car", () => {
         const expected = [car];
-        const actual = dealership.findManufacturer("Renault");
+        const actual = dealership.findManufacturer("Renault", dealership);
         expect(actual).toStrictEqual(expected);
     });
 
@@ -93,7 +93,7 @@ describe("testing dealership methods", () => {
         dealership.addCar(testCar);
 
         const expected = [car, testCar];
-        const actual = dealership.findManufacturer("Renault");
+        const actual = dealership.findManufacturer("Renault", dealership);
         expect(actual).toStrictEqual(expected);
     });
 
@@ -132,15 +132,22 @@ describe("testing dealership methods", () => {
 describe("testing find car methods", () => {
     test("can find car in stock by specific price", () => {
         const expected = [car];
-        const actual = dealership.findPrice(1000);
+        const actual = dealership.findPrice(1000, dealership);
         expect(actual).toStrictEqual(expected);
     });
     
     test("can find car in stock by engine type", () => {
         const expected = [car];
-        const actual = dealership.findEngineType("petrol");
+        const actual = dealership.findEngineType("petrol", dealership);
         expect(actual).toStrictEqual(expected);
     });
 
+    test("can find car using callback - manufacturer", () => {
+        const testCar = new Car("Honda", 2500, "diesel");
+        dealership.addCar(testCar);
 
+        const expected = [testCar];
+        const actual = dealership.findCar("Honda", dealership.findManufacturer);
+        expect(actual).toStrictEqual(expected);
+    });
 });
