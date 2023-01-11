@@ -20,4 +20,8 @@ Dealership.prototype.findManufacturer = function(manufacturerName){
     return this.stock.filter((car) => {return car.manufacturer === manufacturerName});
 }
 
+Dealership.prototype.stockValue = function(){
+    return this.stock.reduce((accumulator, car) => {return accumulator + car.price}, 0);
+}
+
 module.exports = {Dealership};

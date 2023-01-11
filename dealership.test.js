@@ -65,9 +65,29 @@ describe("testing dealership methods", () => {
         expect(actual).toStrictEqual(expected);
     });
     
-    test("can find all cars in stock from specific manufacturer", () => {
+    test("can find all cars in stock from specific manufacturer - one car", () => {
         const expected = [car];
         const actual = dealership.findManufacturer("Renault");
+        expect(actual).toStrictEqual(expected);
+    });
+
+    test("can find all cars in stock from specific manufacturer - multiple cars", () => {
+        const testCar = new Car("Renault", 1200, "petrol");
+
+        dealership.addCar(testCar);
+
+        const expected = [car, testCar];
+        const actual = dealership.findManufacturer("Renault");
+        expect(actual).toStrictEqual(expected);
+    });
+
+    test("can get total value of cars in stock", () => {
+        const testCar = new Car("Renault", 1200, "petrol");
+
+        dealership.addCar(testCar);
+
+        const expected = 2200;
+        const actual = dealership.stockValue();
         expect(actual).toStrictEqual(expected);
     });
 });
