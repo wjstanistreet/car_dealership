@@ -55,5 +55,17 @@ describe("testing dealership methods", () => {
         expect(actual).toBe(expected);
     });
 
+    test("can return array of car manufacturer's in stock", () => {
+        const testCar = new Car("Honda", 2500, "diesel");
+
+        dealership.addCar(testCar);
+
+        const expected = ["Renault", "Honda"];
+        const actual = dealership.stockManufacturers();
+        expect(actual).toStrictEqual(expected);
+    });
+
+
+
 
 });
