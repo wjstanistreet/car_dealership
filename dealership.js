@@ -9,7 +9,9 @@ Dealership.prototype.stockTotal = function(){
 }
 
 Dealership.prototype.addCar = function(carToAdd){
-    this.stock.push(carToAdd);
+    if (this.stock.length < this.stockCapacity) {
+        this.stock.push(carToAdd)
+    };
 }
 
 Dealership.prototype.stockManufacturers = function(){

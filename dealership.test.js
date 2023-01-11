@@ -7,13 +7,13 @@ let car;
 
 beforeEach(() => {
     car = new Car("Renault", 1000, "petrol");
-    dealership = new Dealership("Will's Dealership", 12, [car]);
+    dealership = new Dealership("Will's Dealership", 4, [car]);
 });
 
 describe("testing dealership class", () => {
     test("can create dealership object", () => {
         const expected = dealership;
-        const actual = new Dealership("Will's Dealership", 12, [car]);
+        const actual = new Dealership("Will's Dealership", 4, [car]);
         expect(actual).toStrictEqual(expected);
     });
 
@@ -25,7 +25,7 @@ describe("testing dealership class", () => {
 
     
     test("can access dealership car capacity", () => {
-        const expected = 12;
+        const expected = 4;
         const actual = dealership.stockCapacity;
         expect(actual).toBe(expected);
     });
@@ -51,6 +51,24 @@ describe("testing dealership methods", () => {
         dealership.addCar(testCar);
 
         const expected = 2;
+        const actual = dealership.stockTotal();
+        expect(actual).toBe(expected);
+    });
+
+    test("can't add car to stock that is full", () => {
+        const testCar1 = new Car("Honda", 2500, "diesel");
+        const testCar2 = new Car("Audi", 5500, "electric");
+        const testCar3 = new Car("Honda", 3500, "petrol");
+        const testCar4 = new Car("Toyota", 4000, "petrol");
+        const testCar5 = new Car("Jeep", 2300, "diesel");
+
+        dealership.addCar(testCar1);
+        dealership.addCar(testCar2);
+        dealership.addCar(testCar3);
+        dealership.addCar(testCar4);
+        dealership.addCar(testCar5);
+
+        const expected = 4;
         const actual = dealership.stockTotal();
         expect(actual).toBe(expected);
     });
