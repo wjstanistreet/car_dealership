@@ -36,5 +36,11 @@ describe("testing customer functions", () => {
         expect(actual).toBe(expected);
     });
 
-    test("can add car to customer cars", );
+    test("can add car to customer cars", () => {
+        customer.addCar(car);
+
+        const expected = 1;
+        const actual = customer.car.length;
+        expect(actual).toBe(expected);
+    });
 });
