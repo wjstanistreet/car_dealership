@@ -15,10 +15,12 @@ Customer.prototype.addCar = function(carToAdd){
     this.car.push(carToAdd);
 }
 
-Customer.prototype.buyCar = function(car){
-//     if (this.canAffordCar()) {
-
-//     }
+Customer.prototype.buyCar = function(car, dealership){
+    if (this.canAffordCar(car)) {
+        this.wallet = this.wallet - car.price;
+        dealership.removeCar(car);
+        this.addCar(car);
+    }
 }
 
 module.exports = {Customer};
