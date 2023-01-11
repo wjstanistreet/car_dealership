@@ -6,14 +6,14 @@ let dealership;
 let car; 
 
 beforeEach(() => {
-    dealership = new Dealership("Will's Dealership", 12, 8);
     car = new Car("Renault", 1000, "petrol");
+    dealership = new Dealership("Will's Dealership", 12, [car]);
 });
 
 describe("testing dealership class", () => {
     test("can create dealership object", () => {
         const expected = dealership;
-        const actual = new Dealership("Will's Dealership", 12, 8);
+        const actual = new Dealership("Will's Dealership", 12, [car]);
         expect(actual).toStrictEqual(expected);
     });
 
@@ -31,8 +31,16 @@ describe("testing dealership class", () => {
     });
 
     test("can access dealership current stock", () => {
-        const expected = 8;
+        const expected = [car];
         const actual = dealership.stock;
+        expect(actual).toStrictEqual(expected);
+    });
+});
+
+describe("testing dealership methods", () => {
+    test("can count total stock", () => {
+        const expected = 1;
+        const actual = dealership.stock.length;
         expect(actual).toBe(expected);
     });
 });
