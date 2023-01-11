@@ -13,9 +13,11 @@ Dealership.prototype.addCar = function(carToAdd){
 }
 
 Dealership.prototype.stockManufacturers = function(){
-    const manufacturerNames = [];
-    this.stock.forEach((car) => {manufacturerNames.push(car.manufacturer)});
-    return manufacturerNames;
+    return this.stock.map((car) => {return car.manufacturer});
+}
+
+Dealership.prototype.findManufacturer = function(manufacturerName){
+    return this.stock.filter((car) => {return car.manufacturer === manufacturerName});
 }
 
 module.exports = {Dealership};

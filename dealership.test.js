@@ -64,8 +64,10 @@ describe("testing dealership methods", () => {
         const actual = dealership.stockManufacturers();
         expect(actual).toStrictEqual(expected);
     });
-
-
-
-
+    
+    test("can find all cars in stock from specific manufacturer", () => {
+        const expected = [car];
+        const actual = dealership.findManufacturer("Renault");
+        expect(actual).toStrictEqual(expected);
+    });
 });
