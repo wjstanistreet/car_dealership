@@ -1,3 +1,5 @@
+const {Dealership} = require("./dealership");
+
 const { Car } = require("./car");
 
 let dealership;
@@ -12,7 +14,7 @@ describe("testing dealership class", () => {
     test("can create dealership object", () => {
         const expected = dealership;
         const actual = new Dealership("Will's Dealership", 12, 8);
-        expected(actual).toBe(expected);
+        expect(actual).toStrictEqual(expected);
     });
 
     test("can access dealership name", () => {
