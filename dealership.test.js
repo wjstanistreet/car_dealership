@@ -1,13 +1,17 @@
 const {Dealership} = require("./dealership");
 
-const { Car } = require("./car");
+const {Car} = require("./car");
+
+const {Customer} = require("./customer");
 
 let dealership;
 let car; 
+let customer;
 
 beforeEach(() => {
     car = new Car("Renault", 1000, "petrol");
     dealership = new Dealership("Will's Dealership", 4, [car]);
+    customer = new Customer("Bill", 4000);
 });
 
 describe("testing dealership class", () => {
