@@ -31,6 +31,4 @@ describe("testing car class", () => {
         const actual = car.engineType;
         expect(actual).toBe(expected);
     });
-
-
 });
