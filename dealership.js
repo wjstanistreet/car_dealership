@@ -26,4 +26,16 @@ Dealership.prototype.stockValue = function(){
     return this.stock.reduce((accumulator, car) => {return accumulator + car.price}, 0);
 }
 
+Dealership.prototype.getCarIndex = function(carToFind){
+    return this.stock.findIndex(car => (car.manufacturer === carToFind.manufacturer && car.price === carToFind.price && car.engineType === carToFind.engineType));
+}
+
+Dealership.prototype.removeCar = function(carToRemove){
+    const carIndex = this.getCarIndex(carToRemove);
+    
+    if (this.stock.includes(carToRemove)){
+        this.stock.splice(carIndex, 1);
+    }
+}
+
 module.exports = {Dealership};

@@ -27,7 +27,6 @@ describe("testing dealership class", () => {
         expect(actual).toBe(expected);
     });
 
-    
     test("can access dealership car capacity", () => {
         const expected = 4;
         const actual = dealership.stockCapacity;
@@ -48,7 +47,6 @@ describe("testing dealership methods", () => {
         expect(actual).toBe(expected);
     });
 
-    
     test("can add car to stock", () => {
         const testCar = new Car("Honda", 2500, "diesel");
 
@@ -112,4 +110,29 @@ describe("testing dealership methods", () => {
         const actual = dealership.stockValue();
         expect(actual).toStrictEqual(expected);
     });
+
+    test("can remove car from stock", () => {
+        const testCar = new Car("Honda", 2500, "diesel");
+        dealership.addCar(testCar);
+
+        dealership.removeCar(testCar);
+
+        const expected = 1;
+        const actual = dealership.stockTotal();
+        expect(actual).toBe(expected);
+    });    
+    
+    test("will not remove car not in stock", () => {
+        const testCar = new Car("Honda", 2500, "diesel");
+
+        dealership.removeCar(testCar);
+
+        const expected = 1;
+        const actual = dealership.stockTotal();
+        expect(actual).toBe(expected);
+    });
+});
+
+describe("testing buying a car", () => {
+    
 });
